@@ -1,0 +1,20 @@
+7. How many individuals have an income higher than the average income?
+
+The query below shows who gain a higher income than the average income of the data set. 
+
+SELECT
+	ID,
+  Income,
+  (SELECT AVG(Income) FROM risk_behavior_features) AS 'Average'
+FROM risk_behavior_features
+WHERE Income > (SELECT AVG(Income) FROM risk_behavior_features);
+
+To get the number of individuals who respect the condition below and compare it with the total number of records, I have used the query below:
+
+SELECT
+	COUNT(ID) AS 'Count',
+  (SELECT COUNT(*) FROM risk_behavior_features) AS 'Total'
+FROM risk_behavior_features
+WHERE Income > (SELECT AVG(Income) FROM risk_behavior_features);
+
+This means that 39 of 73 individuals (53.42%) get a higher salary than the average.  The income distribution is relatively balanced, but slightly shifted towards higher incomes.
