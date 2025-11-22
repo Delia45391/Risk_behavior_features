@@ -1,0 +1,10 @@
+3.	Which marital status has the highest credit score?
+
+The query below shows that the single people have the highest credit score, which means they are most likely to pay debts on time. The divorced ones may find it difficult to pay all debts on time. Without partner or other financial support, from family or friends, it’s harder to pay debts, while making other expenses, especially if the divorced ones are also parents or have to take care for someone from the family.
+
+SELECT 
+	Marital_Status,
+  MAX(Credit_Score) AS 'Highest_Credit_Score'
+FROM risk_behavior_features
+GROUP BY Marital_Status
+ORDER BY MAX(Credit_Score) DESC;
