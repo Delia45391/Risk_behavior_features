@@ -1,0 +1,14 @@
+1.	What gender has the highest level of education (Doctorate)?
+
+Using the query below, we can see that there is almost the same level of education for genders, equal between female and male.
+
+SELECT
+  Gender,
+  SUM(CASE WHEN Education_Level = 'Doctorate' THEN 1 ELSE 0 END) AS 'Doctorate',
+  COUNT(*) AS 'Total',
+  ROUND(SUM(CASE WHEN Education_Level = 'Doctorate' THEN 1 ELSE 0 END)/COUNT(*) * 100, 2) AS 'Doctorate_Percentage'
+FROM risk_behavior_features
+GROUP BY Gender
+ORDER BY Gender;
+
+So, most of the people who have a doctorate degree are non-binary because 8 represent 50% of 16, 6 females with doctorate represents 24% out of total females and 6 males with doctorate represents 19% out of total males. Between females and males, it seems that more women have doctorate degree than men, because there are fewer women than men in this data set.
