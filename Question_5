@@ -1,0 +1,29 @@
+5. Who has the highest and the lowest value of the assets?
+
+First, I had to check if there are people whose assets have the same value.
+
+SELECT 
+	Assets_Value,
+    COUNT(ID)
+FROM risk_behavior_features
+GROUP BY Assets_Value
+HAVING COUNT(Assets_Value) > 1;
+
+So there are at least 2 individuals that have the same assets value, but the gender, education level, age etc. can be different for each one. I want to see if the highest and the lowest value are on the list.
+
+SELECT 
+	MAX(Assets_Value) AS 'Max', 
+	MIN(Assets_Value) AS 'Min'
+FROM risk_behavior_features;
+
+The values appear just once. Let’s compare the details of the person with the highest value of the assets with the person that have the lowest value of the assets.
+
+SELECT * FROM risk_behavior_features
+WHERE Assets_Value IN (
+	(SELECT MAX(Assets_Value) AS 'Max' FROM risk_behavior_features),
+  (SELECT MIN(Assets_Value) AS 'Min' FROM risk_behavior_features) 
+);
+
+The individual with the highest asset value has a higher income, which allows them to manage financial obligations more effectively compared to the individual with lower assets. A greater asset value provides additional collateral for the bank, whereas the individual with lower assets presents a higher degree of financial vulnerability.
+The debt-to-income ratio is lower for the person with higher assets, indicating that their level of debt is more sustainable relative to their income. Age and professional experience represent additional advantages in obtaining credit, as they reflect financial stability and long-term reliability
+From a credit risk perspective, the person with higher income and a lower debt-to-income ratio is perceived as more reliable for the bank compared to the one with lower income and fewer assets.
