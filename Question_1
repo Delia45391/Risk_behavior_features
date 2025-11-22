@@ -12,3 +12,5 @@ GROUP BY Gender
 ORDER BY Gender;
 
 So, most of the people who have a doctorate degree are non-binary because 8 represent 50% of 16, 6 females with doctorate represents 24% out of total females and 6 males with doctorate represents 19% out of total males. Between females and males, it seems that more women have doctorate degree than men, because there are fewer women than men in this data set.
+
+Check the snippets folder - Q1.png
