@@ -1,0 +1,17 @@
+6. What is the average and the median of the income column?
+
+The average income is 68,189 dollars, while the median income is 70,978.
+This difference indicates that the income distribution is right-skewed, meaning that a relatively small number of individuals earn significantly higher incomes, which pulls the average upward.
+The median therefore provides a more accurate representation of a normal value of the income level in the dataset, as it is less affected by extreme values.
+
+SELECT
+	(SELECT ROUND(AVG(Income), 2) FROM risk_behavior_features) AS 'Average',
+  (SELECT ROUND(AVG(Income),2)
+	FROM (
+		SELECT
+		  Income,
+			ROW_NUMBER() OVER (ORDER BY Income) AS 'rn',
+			COUNT(*) OVER () AS 'Total'
+		FROM risk_behavior_features
+    ) AS m
+		  WHERE rn IN (FLOOR((Total + 1) / 2), CEIL ((Total + 1) / 2))) AS 'Median';
