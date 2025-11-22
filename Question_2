@@ -12,3 +12,5 @@ GROUP BY Education_Level
 ORDER BY AVG(Income) DESC;
 
 These being said, the ones who finished high school have the highest average income, but the highest salary is owned by someone whith Bachelor degree, followed by Doctorate degree.  Also, the average income for the doctorate degree is the second highest, after high school. Graduating from university does not guarantee a satisfactory salary, but we also need to consider the fact that only 2 of the repondents of the survey have graduated high school, so it is pretty hard to have such a big amount of money without a college degree.
+
+Check the snippets folder - Q2.png
