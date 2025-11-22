@@ -1,0 +1,10 @@
+4. How many people are unemployed and what is the average age compared with the employed ones?
+
+Using the COUNT() and AVG() with the GROUP BY() statement, I have discovered that the average age of the employed respondents of the survey is 42 yo, while the average age of the unemployed respondents is 31 yo. Most of the respondents are employed and they tend to be older than the unemployed ones, so it indicates that they have more experience in their jobs.
+
+SELECT 
+	Employment_Status,
+  COUNT(Employment_Status) AS 'Employmenr_Count',
+  ROUND(AVG(Age)) AS 'Avg_Age'
+FROM risk_behavior_features
+GROUP BY Employment_Status;
